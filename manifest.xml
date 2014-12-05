@@ -1,7 +1,5 @@
-<package format="2">
-  <name>lapackpp</name>
-  <version>2.5.4</version>
-  <description>
+<package>
+  <description brief="lapackpp">
 
      LAPACK++ is a library for high performance linear algebra computations.
      This version includes support for solving linear systems using LU, Cholesky,
@@ -12,9 +10,20 @@
 
   </description>
   <author>Christian Stimming</author>
-  <maintainer email="malban@swri.org">Marc Alban</maintainer>
   <license>LGPL v2</license>
+  <review status="unreviewed" notes=""/>
   <url>http://lapackpp.sourceforge.net</url>
-
-  <buildtool_depend>catkin</buildtool_depend>
+  
+  <rosdep name="build-essential"/>
+  <rosdep name="liblapack-dev"/>
+  <rosdep name="libblas-dev"/>
+  <rosdep name="libatlas-base-dev"/>
+  <rosdep name="gfortran"/>
+  
+  <export> 
+	  <cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib -Wl,-rpath,-L${prefix}/lib -llapackpp -llapack"/>
+  </export>
+  <depend package="build_tools"/>
 </package>
+
+
